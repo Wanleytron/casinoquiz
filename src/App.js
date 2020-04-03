@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios'
+import Starships from './compnents/Starships';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state={
+    starships:[]
+
+  }
+
+  getStarships =() => {
+    axios.get('https://swapi.co/api/starships').then(response => {
+     const data = response.data.results
+      this.setState({
+        starships:data.sort( (a, b) => {
+          return parseFloat(b['crew']) - parseFloat(a['crew'])
+          
+    
+        })
+      })
+     
+      
+    })
+  }
+
+  componentDidMount(){
+      this.getStarships();
+  }
+
+  // sortBy =(key) =>{
+  //   const sortedShips = this.state.starships.sort( (a, b) => {
+  //     return parseFloat(b[key]) - parseFloat(a[key])
+      
+
+  //   })
+
+    
+  //   this.setState({
+  //     starships: sortedShips
+  //   })
+
+  // }
+  render() {
+    return (
+      <div className='app'>
+        <h1>Starships</h1>
+        <Starships starships={this.state.starships} />
+      </div>
+    );
+  }
 }
 
 export default App;

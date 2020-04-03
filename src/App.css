@@ -1,38 +1,94 @@
-.App {
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Reset margins and paddings on most elements */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p,
+pre,
+blockquote,
+figure,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------- */
+.app {
+  height: 100vh;
+  background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
+  padding: 30px;
+}
+.Starships {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
+
+  align-content: center;
+
+  margin: 0 auto;
+}
+
+h1 {
+  color: #1cb5e0;
+  width: 400px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  color: #000851;
+}
+h3 {
+  color: rgb(104, 104, 104);
+  font-weight: 200;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.starshipDetails {
+  background: #eee;
+
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+.sep {
+  height: 2px;
+  width: 100%;
+  background-color: #d3d3;
+  margin-top: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.starshipInDetails {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  text-align: center;
+
+  margin: 20px -5px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.starshipInDetails > div {
+  width: 33.33%;
+  background: #c0c3df;
+  margin: 0 5px;
+  padding: 10px 5px;
+  border-radius: 5px;
 }
