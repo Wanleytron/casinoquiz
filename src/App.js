@@ -6,7 +6,9 @@ import Starships from './compnents/Starships';
 
 class App extends Component {
   state={
-    starships:[]
+    starships:[] ,
+    filmsCount:null
+    
 
   }
 
@@ -16,10 +18,11 @@ class App extends Component {
       this.setState({
         starships:data.sort( (a, b) => {
           return parseFloat(b['crew']) - parseFloat(a['crew'])
-          
-    
-        })
+        }),
+        
+        
       })
+      
      
       
     })
@@ -46,7 +49,7 @@ class App extends Component {
     return (
       <div className='app'>
         <h1>Starships</h1>
-        <Starships starships={this.state.starships} />
+        <Starships starships={this.state.starships} filmsCount={this.state.filmsCount}/>
       </div>
     );
   }
