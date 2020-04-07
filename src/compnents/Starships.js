@@ -7,14 +7,55 @@ class Starships extends Component {
 
     
       
+// function findShipWithMostFilms(results) {
+//       let max = 0;
+//       let returnedShip = null;
+//     for(let i = 0; i < results.length; i++) {
+//       if(results[i].films_count > max) {
+//         max = results[i].films_count;
+//         returnedShip = results[i];
+//       }
+//     }
+//     return returnedShip;
+//       }
+    
+// var ship = findShipWithMostFilms(map)
+// var most = map.indexOf(ship)
+// if(i==most){ship.classList.add('most');}
+state={
+      maxNumberOfFilms:0,
+}
+
       render() {
-            
-          
+
             const {starships} = this.props;
+
+            console.log(starships)
+
+           
+
          
-         
+            const highestNumber = (results) => {
+                  let maxValue = 0;
+                  let returnedShip = null;
+                  for(let i = 0; i < starships.length; i++) {
+                  if(starships[i].films.length > maxValue) {
+                  maxValue = starships[i].films.length;
+                  returnedShip = starships[i];
+        
       
-         
+            }
+        }    
+        return returnedShip
+      } 
+      const ship = highestNumber(starships);
+      const mostNumber = starships.indexOf(ship)
+
+    
+
+      console.log(mostNumber)
+
+    
             
             // const starshipList = starships.map(starship => {
             //       return(
@@ -30,94 +71,23 @@ class Starships extends Component {
             // })
             // Math.max.apply(Math, array.map(function(o) { return o.y; }))
 
-           
-           
-            // console.log(starShopList)
-
-          
-                  let max = 0;
-                  let returnedShip = null;
-                  for(let i = 0; i < starships.length; i++) {
-                  if(starships[i].films.length > max) {
-                  max = starships[i].films.length;
-                  returnedShip = starships[i];
-
-                  
-
-            }
-        }     
-      console.log(returnedShip)
-
-
-
             return (
                   <>
                  
                         <div className='Starships'>
-                             
-
-
-                             {starships.map(starship => 
-                                    
-                                    
-                                          starship['crew'] >= 10 ? (
-
-                                    <div className='starshipDetails'>
-                                   <div style={{display: 'flex', justifyContent:'space-between'}}>
-                                         <div>
-                                         <h3>{starship.name}</h3> 
-                                         <h4>{starship.model}</h4>
-                                         </div>
-                 
-                                         { 
-                                                starship['films'].length > 1 ? <FontAwesomeIcon icon={faStar} />: null
-                                          }
-                                        
-                                         
-                                         
-                                   </div>
-                                  
-                                   <div className='sep'></div>
-                                   <div className='starshipInDetails'>
-                                         <div>
-                                               <h4>{starship.crew}</h4>
-                                               <p>Crew</p>
-                                         </div>
-                                         <div>
-                                               <h4>{starship.passengers}</h4>
-                                               <p>Passengers</p>
-                                         </div>
-                                         <div>
-                                               
-                                               
-                                               <h4>{starship.films.length}</h4>
-                                               <p>Films</p>
-                                         </div>
-                                   </div>
-                             </div>
-
-                                    )  : null   
-                              
-                              
-                               
-                             )}
-                            
-
-                              {/* {starships.map(starship => {
-
-                                    
-                                    return(
-                                    starship['crew'] >= 10 ? (<ShipDetails key={starship.url} starship={starship} />): null
-                                    )
-
-                                   { Math.max.apply(Math, starships.map(starship => {
-                                          return(
-                                          <ShipDetails key={starship.url} starship={starship} />
-                                          )
-                                    }))
-                              }
                           
-                              })} */}
+
+                             {
+                             starships.map((starship, i) => {
+                                   
+                                   console.log(starship)
+
+                              
+                                    return( 
+                                   <ShipDetails  key={i} starship={starship} highestNumber={this.highestNumber}/>
+                                        )
+                                    })
+                              }
                         </div>
                   </>
             );
